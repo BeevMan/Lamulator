@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+  
+    <meta charset="utf-8">
+    <title>Lamulator</title>
+  </head>
+  <body style="background-color:grey">
+    <h1>The Lamulator</h1>
+      <p> Very basic calculator, made without using tutorials or "cheater material".</p>   
+      <table>
+	    <thead>
+          <tr>
+            <th colspan="4"><input type="text" id="equation" dir="rtl" value="0"/></th>
+          </tr>
+		</thead>
+        <tbody>
+		  <tr>
+            <td><button onclick = "clearDisplay()">CE</button></td>
+            <td><button onclick = "clearIt()">C</button></td>
+            <td><button onclick = "backspace()"><-x</button></td>
+            <td><button onclick = "calculate(innerText)">/</button></td>
+          </tr>
+		  <tr>
+            <td><button onclick = "calculate(7)" >7</button></td>
+            <td><button onclick = "calculate(8)" >8</button></td>
+            <td><button onclick = "calculate(9)" >9</button></td>
+            <td><button onclick = "calculate(innerText)" >X</button></td>
+          </tr>
+          <tr>
+            <td><button onclick = "calculate(4)" >4</button></td>
+            <td><button onclick = "calculate(5)" >5</button></td>
+            <td><button onclick = "calculate(6)" >6</button></td>
+            <td><button onclick = "calculate(innerText)" >-</button></td>
+          </tr>
+          <tr>
+           <td><button onclick = "calculate(1)" >1</button></td>
+            <td><button onclick = "calculate(2)" >2</button></td>
+            <td><button onclick = "calculate(3)" >3</button></td>
+            <td><button onclick = "calculate(innerText)" >+</button> </td>
+          </tr>
+          <tr>
+            <td><button onclick = "calculate(innerText)" >.</button></td>
+            <td><button onclick = "calculate(0)" >0</button></td>
+            <td colspan="2"><button onclick = "calculate(innerText)" >=</button></td>
+          </tr>
+		</tbody>
+      </table>
+	<h2>Things it needs</h2>
+	  <ul>
+		<li>This is phase one, phase two we'll work on the memory, clear, backspace etc...</li>
+		<li>5+5-3*0.2 = 1.4000000000000001  JS has some issues with floating point numbers, need to look into it more to fix</li>
+		
+		<li>none of the clear/backspace functions are implemented</li>
+	  </ul>
+  <script type="text/javascript" src="basicCalc.js"></script>
+  </body>
+  
+</html>
