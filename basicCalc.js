@@ -88,7 +88,7 @@ function clearIt (){
 }
 function backspace(){ 
     if (typeof strCurNum === "number"){ // incase user backspaces an answer 
-		strCurNum = strCurNum.toString();
+		return;
 	}
 	strCurNum = strCurNum.substring(0,strCurNum.length-1) || "0";
 	return document.getElementById("equation").value = strCurNum;
