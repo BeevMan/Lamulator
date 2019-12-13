@@ -12,7 +12,7 @@ let objMath = {
 	};
 
 function calculate(input){
-	console.log("-----input pressed-------",input);
+	console.log("-----input pressed-------");
 	
 	
 	if (typeof input === "number" || input === "." && strCurNum.includes(".") === false){
