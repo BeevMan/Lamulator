@@ -84,7 +84,7 @@ function clearEntry (){ // clear entry
 function clearIt (){
 	arrCurEqua = [];
 	intCount = 0;
-    clearDisplay();
+        clearEntry();
 }
 function backspace(){ 
     if (typeof strCurNum === "number"){ // incase user backspaces an answer 
