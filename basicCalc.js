@@ -2,8 +2,8 @@
 
 let arrCurEqua = [];
 let arrHistory = [];
-let strCurNum = "0"; // switches to number after it returns 
-let intCount = 0;
+let strCurNum = "0"; // switches to number after it returns an answer
+let intCount = 0; // goes up when math symbols are input
 let objMath = { 
 	    "/": function (num1,num2) {return num1 / Number(arrCurEqua[num2])},
 		"X": function (num1,num2) {return num1 * Number(arrCurEqua[num2])},
@@ -74,6 +74,24 @@ function calculate(input){
 		
 	}
 
+}
+
+function clearEntry (){ // clear entry
+	console.log("display and strCurNum cleared")
+	strCurNum = "0";
+	return document.getElementById("equation").value = strCurNum;
+}
+function clearIt (){
+	arrCurEqua = [];
+	intCount = 0;
+    clearDisplay();
+}
+function backspace(){ 
+    if (typeof strCurNum === "number"){ // incase user backspaces an answer 
+		strCurNum = strCurNum.toString();
+	}
+	strCurNum = strCurNum.substring(0,strCurNum.length-1)
+	return document.getElementById("equation").value = strCurNum;
 }
 
 
