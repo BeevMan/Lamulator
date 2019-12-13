@@ -76,7 +76,7 @@ function calculate(input){
 
 }
 
-function clearEntry (){ // clear entry
+function clearEntry (){
 	console.log("display and strCurNum cleared")
 	strCurNum = "0";
 	return document.getElementById("equation").value = strCurNum;
@@ -84,13 +84,13 @@ function clearEntry (){ // clear entry
 function clearIt (){
 	arrCurEqua = [];
 	intCount = 0;
-        clearEntry();
+    clearEntry();
 }
 function backspace(){ 
     if (typeof strCurNum === "number"){ // incase user backspaces an answer 
 		strCurNum = strCurNum.toString();
 	}
-	strCurNum = strCurNum.substring(0,strCurNum.length-1)
+	strCurNum = strCurNum.substring(0,strCurNum.length-1) || "0";
 	return document.getElementById("equation").value = strCurNum;
 }
 
