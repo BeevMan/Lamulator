@@ -5,14 +5,14 @@ let arrHistory = [];
 let strCurNum = "0"; // switches to number after it returns an answer
 let intCount = 0; // goes up when math symbols are input
 let objMath = { 
-	    "/": function (num1,num2) {return num1 / Number(arrCurEqua[num2])},
+	    "÷": function (num1,num2) {return num1 / Number(arrCurEqua[num2])},
 		"X": function (num1,num2) {return num1 * Number(arrCurEqua[num2])},
 		"-": function (num1,num2) {return num1 - Number(arrCurEqua[num2])},
 		"+": function (num1,num2) {return num1 + Number(arrCurEqua[num2])},
 	};
 
 function calculate(input){
-	console.log("-----input pressed-------");
+	console.log("-----input pressed-------",input);
 	
 	
 	if (typeof input === "number" || input === "." && strCurNum.includes(".") === false){
