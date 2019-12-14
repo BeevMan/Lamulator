@@ -5,10 +5,28 @@ let arrHistory = [];
 let strCurNum = "0"; // switches to number after it returns an answer
 let intCount = 0; // goes up when math symbols are input
 let objMath = { 
-	    "÷": function (num1,num2) {return num1 / Number(arrCurEqua[num2])},
-		"X": function (num1,num2) {return num1 * Number(arrCurEqua[num2])},
-		"-": function (num1,num2) {return num1 - Number(arrCurEqua[num2])},
-		"+": function (num1,num2) {return num1 + Number(arrCurEqua[num2])},
+	    "÷": function (a,b) {return a / b},
+		"X": function (a,b) {return a * b},
+		"-": function (a,b) {return a - b},
+		"+": function (a,b) {return a + b},
+		"dec": function (floatA,floatB,decs,intSymbol) { // converts numbers to integers instead of floating point/s 
+		    
+			console.log("multiplied by", decs);
+			let intTemp = Number(floatA) * decs;
+			let intTempb = Number(floatB) * decs;
+			console.log(intTemp,arrCurEqua[intSymbol],intTempb);
+			let temp = objMath[arrCurEqua[intSymbol]](intTemp,intTempb);
+			console.log(temp);
+			if (arrCurEqua[intSymbol] === "÷"){
+				console.log("floating point with division!!!");
+			    return temp;
+			} else if (arrCurEqua[intSymbol] === "X"){
+				console.log("floating point with multiplication!!");
+				temp = objMath["÷"](temp,decs);
+			}
+			
+			return temp = objMath["÷"](temp,decs);
+		}
 	};
 
 function calculate(input){
@@ -31,24 +49,24 @@ function calculate(input){
 			strCurNum = strCurNum.toString();
 			console.log("converted an answer to string!");
 		}
-		if (intCount === 0){
-		    console.log("somethin");
-	    } else {
-			intCount++;
+		if (intCount > 0){
+		    intCount++;
 	    }
+		
 		console.log(intCount);
 	    arrCurEqua[intCount] = strCurNum;
 		strCurNum = "0";
 		arrCurEqua[++intCount] = input;
 		console.log(intCount);
+		
 	} else if (input === "=" && intCount >= 1 && strCurNum !== "0"){ 
 	    console.log("equals!");
-	    intCount++;
-		arrCurEqua[intCount] = strCurNum;
+		arrCurEqua[++intCount] = strCurNum;
 		strCurNum = "0";
 		arrCurEqua[++intCount] = input;
 		
 		let num1 = "";
+		let intb = "";
 		let intSymbol = 1;
 		let num2 = 2;
 		for (var i = 2; i <= intCount; i++){
@@ -65,10 +83,35 @@ function calculate(input){
 			if (typeof num1 === "string"){
 				num1 = Number(arrCurEqua[0]);
 			};
-			console.log(num1,arrCurEqua[intSymbol],Number(arrCurEqua[num2]));
-			num1 = objMath[arrCurEqua[intSymbol]](num1,num2);
-			intSymbol = intSymbol + 2;
-			num2 = num2 + 2;
+			if (Number.isInteger(num1) === false || arrCurEqua[num2].includes(".")){ // catch for floating points
+				console.log("floating point number found in equation");
+				num1 = num1.toString();
+				console.log("num1",num1);
+				let len1 = 0;
+				if (num1.indexOf(".") !== -1){
+					len1 = num1.length-1 - num1.indexOf(".");
+				}
+				let len2 = 0;
+				if (arrCurEqua[num2].indexOf(".") !== -1){
+					len2 = arrCurEqua[num2].length-1 - arrCurEqua[num2].indexOf(".");
+				}
+                let decCount = 0;
+                console.log("len1",len1,"len2",len2);				
+				if (len1 >= len2){ 
+					decCount = len1;
+				} else {
+				    decCount = len2;
+				}
+                console.log("longest decibal count is",decCount);
+				let decInd = Math.pow(10, decCount);
+				num1 = objMath.dec(num1,arrCurEqua[num2],decInd,intSymbol);
+			} else {
+				intb = Number(arrCurEqua[num2]);
+				console.log(num1,arrCurEqua[intSymbol],intb);
+				num1 = objMath[arrCurEqua[intSymbol]](num1,intb);
+			}
+			intSymbol += 2;
+			num2 += 2;
 			console.log(num1);
 		}
 		
